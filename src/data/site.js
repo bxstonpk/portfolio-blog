@@ -2,11 +2,11 @@
 export const site = {
   name: 'Prasit Krongmaroeng',
   initials: 'PK',
-  role: 'Business Analyst • Developer • Problem Solver',
+  role: 'Business Analyst • Software Engineer • Problem Solver',
   tagline:
     'I build digital solutions that improve business processes and create value through data and automation.',
   bio: [
-    "I'm a Business Analyst and Developer with a background in accounting and a strong passion for process improvement.",
+    "I'm a Business Analyst and Software Engineer with a background in accounting and a strong passion for process improvement.",
     'I enjoy solving complex problems, automating tasks, and turning ideas into practical business value.',
   ],
   location: 'Bangkok, Thailand',
@@ -47,9 +47,9 @@ export const journey = [
 ]
 
 export const education = [
-  "Master's Degree in Computer Engineering (In Progress)",
-  "Bachelor's Degree in Computer Engineering",
-  'Certifications: Google Data Analytics, ...',
+  "Master's Degree in Computer Engineering (In Progress)\nDhurakij Pundit University, Thailand",
+  "Bachelor's Degree in Computer Engineering\nSoutheast Asia University, Thailand",
+  'Certifications: AI ML IoT',
 ]
 
 export const interests = [
