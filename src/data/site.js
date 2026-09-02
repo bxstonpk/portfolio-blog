@@ -10,9 +10,9 @@ export const site = {
     'I enjoy solving complex problems, automating tasks, and turning ideas into practical business value.',
   ],
   location: 'Bangkok, Thailand',
-  email: 'prasit@example.com',
-  github: 'https://github.com/prasitk',
-  linkedin: 'https://www.linkedin.com/in/prasitk',
+  email: 'p.krongmaaroeng@gmail.com',
+  github: 'https://github.com/bxstonpk',
+  linkedin: 'https://www.linkedin.com/in/prasit-krongmaroeng-735a2426a',
   twitter: '',
 }
 
