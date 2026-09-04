@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div>
-      <section className="border-b border-slate-200 py-20 dark:border-slate-800">
+      <section className="border-b border-slate-200 py-12 dark:border-slate-800">
         <Container className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <p className="text-lg text-slate-600 dark:text-slate-400">Hi, I&apos;m</p>
@@ -40,7 +40,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="flex h-56 w-56 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-6xl font-bold text-white sm:h-72 sm:w-72">
+            <div className="flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-5xl font-bold text-white sm:h-56 sm:w-56">
               {site.initials}
             </div>
           </div>
