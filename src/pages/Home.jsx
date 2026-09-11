@@ -47,9 +47,11 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-5xl font-bold text-white sm:h-56 sm:w-56">
-              {site.initials}
-            </div>
+            <img
+              src="/images/profile.jpg"
+              alt={site.name}
+              className="h-40 w-40 rounded-full object-cover shadow-lg ring-4 ring-white sm:h-56 sm:w-56 dark:ring-slate-800"
+            />
           </div>
         </Container>
       </section>

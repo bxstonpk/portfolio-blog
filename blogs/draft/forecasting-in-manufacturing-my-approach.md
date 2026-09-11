@@ -1,6 +1,6 @@
 ---
 title: "Forecasting in Manufacturing: My Approach"
-date: "2026-04-28"
+date: "2026-09-11"
 category: "Business"
 tags:
   - Data Analysis

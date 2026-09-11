@@ -15,9 +15,11 @@ export default function About() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[280px_1fr]">
           <aside className="space-y-5">
-            <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-4xl font-bold text-white">
-              {site.initials}
-            </div>
+            <img
+              src="/images/profile.jpg"
+              alt={site.name}
+              className="h-40 w-40 rounded-2xl object-cover shadow-lg"
+            />
             <div>
               <h2 className="text-xl font-semibold">{site.name}</h2>
               <p className="text-sm text-slate-600 dark:text-slate-400">{pick(site.role, lang)}</p>
