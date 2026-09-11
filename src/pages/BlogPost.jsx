@@ -7,11 +7,12 @@ import { ArrowLeft, Check, Link2 } from 'lucide-react'
 import { FaFacebook, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
 import { getPostBySlug } from '../lib/posts.js'
 import { extractHeadings } from '../lib/toc.js'
+import { useLanguage } from '../context/LanguageContext.jsx'
 import Container from '../components/Container.jsx'
 
-function formatDate(date) {
+function formatDate(date, lang) {
   if (!date) return ''
-  return new Date(date).toLocaleDateString('en-US', {
+  return new Date(date).toLocaleDateString(lang === 'th' ? 'th-TH' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -20,7 +21,8 @@ function formatDate(date) {
 
 export default function BlogPost() {
   const { slug } = useParams()
-  const post = getPostBySlug(slug)
+  const { lang, t } = useLanguage()
+  const post = getPostBySlug(slug, lang)
   const headings = useMemo(() => (post ? extractHeadings(post.content) : []), [post])
   const [copied, setCopied] = useState(false)
 
@@ -47,10 +49,16 @@ export default function BlogPost() {
           to="/blog"
           className="mb-6 inline-flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
         >
-          <ArrowLeft size={16} /> Back to Blog
+          <ArrowLeft size={16} /> {t('blogPost.back')}
         </Link>
 
         <div className="mb-8 h-56 rounded-xl bg-gradient-to-br from-violet-500/30 via-fuchsia-500/10 to-slate-500/10" />
+
+        {post.lang !== lang && (
+          <p className="mb-6 rounded-lg bg-amber-100 px-4 py-2 text-sm text-amber-800 dark:bg-amber-500/15 dark:text-amber-300">
+            {t('blogPost.englishOnly')}
+          </p>
+        )}
 
         <div className="mb-8">
           <span className="rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
@@ -58,7 +66,7 @@ export default function BlogPost() {
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl">{post.title}</h1>
           <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            {formatDate(post.date)} · {post.readingTime} min read
+            {formatDate(post.date, lang)} · {post.readingTime} {t('blog.minRead')}
           </p>
         </div>
 
@@ -73,7 +81,7 @@ export default function BlogPost() {
             {headings.length > 0 && (
               <div>
                 <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                  Table of Contents
+                  {t('blogPost.toc')}
                 </h2>
                 <ul className="space-y-2 text-sm">
                   {headings.map((heading) => (
@@ -93,7 +101,7 @@ export default function BlogPost() {
             {post.tags.length > 0 && (
               <div>
                 <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                  Tags
+                  {t('blogPost.tags')}
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
@@ -110,7 +118,7 @@ export default function BlogPost() {
 
             <div>
               <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                Share this post
+                {t('blogPost.share')}
               </h2>
               <div className="flex items-center gap-2">
                 <a

@@ -1,8 +1,10 @@
 // Edit this list to reflect your own stack. `icon` keys map to
-// components/SkillIcon.jsx.
+// components/SkillIcon.jsx. `titleKey` maps to skills.groups.* in
+// src/i18n/translations.js — skill names themselves (React, Docker, ...)
+// are technical terms and stay the same in both languages.
 export const skillGroups = [
   {
-    title: 'Languages',
+    titleKey: 'skills.groups.languages',
     skills: [
       { name: 'Go', icon: 'go' },
       { name: 'Python', icon: 'python' },
@@ -12,7 +14,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: 'Frontend',
+    titleKey: 'skills.groups.frontend',
     skills: [
       { name: 'React', icon: 'react' },
       { name: 'Tailwind CSS', icon: 'tailwind' },
@@ -22,7 +24,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: 'Backend',
+    titleKey: 'skills.groups.backend',
     skills: [
       { name: 'Go', icon: 'go' },
       { name: 'Node.js', icon: 'nodejs' },
@@ -31,7 +33,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: 'Tools & Others',
+    titleKey: 'skills.groups.tools',
     skills: [
       { name: 'Git', icon: 'git' },
       { name: 'Docker', icon: 'docker' },

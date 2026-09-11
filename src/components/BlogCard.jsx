@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 const GRADIENTS = [
   'from-violet-500/30 via-fuchsia-500/10 to-slate-500/10',
@@ -19,9 +20,9 @@ function gradientFor(slug) {
   return GRADIENTS[sum % GRADIENTS.length]
 }
 
-function formatDate(date) {
+function formatDate(date, lang) {
   if (!date) return ''
-  return new Date(date).toLocaleDateString('en-US', {
+  return new Date(date).toLocaleDateString(lang === 'th' ? 'th-TH' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -29,6 +30,7 @@ function formatDate(date) {
 }
 
 export default function BlogCard({ post }) {
+  const { lang, t } = useLanguage()
   const badgeClass =
     CATEGORY_STYLES[post.category] ??
     'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
@@ -48,9 +50,11 @@ export default function BlogCard({ post }) {
         </h3>
         <p className="mt-2 flex-1 text-sm text-slate-600 dark:text-slate-400">{post.excerpt}</p>
         <div className="mt-4 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-500">
-          <span>{formatDate(post.date)}</span>
+          <span>{formatDate(post.date, lang)}</span>
           <span aria-hidden="true">·</span>
-          <span>{post.readingTime} min read</span>
+          <span>
+            {post.readingTime} {t('blog.minRead')}
+          </span>
         </div>
       </div>
     </Link>

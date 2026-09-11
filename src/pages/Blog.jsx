@@ -1,12 +1,15 @@
 import { useMemo, useState } from 'react'
 import { Search } from 'lucide-react'
-import { posts, getPostCategories } from '../lib/posts.js'
+import { getPosts, getPostCategories } from '../lib/posts.js'
+import { useLanguage } from '../context/LanguageContext.jsx'
 import Container from '../components/Container.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import BlogCard from '../components/BlogCard.jsx'
 
 export default function Blog() {
-  const categories = useMemo(getPostCategories, [])
+  const { lang, t } = useLanguage()
+  const posts = useMemo(() => getPosts(lang), [lang])
+  const categories = useMemo(() => getPostCategories(lang), [lang])
   const [active, setActive] = useState('All')
   const [query, setQuery] = useState('')
 
@@ -23,13 +26,21 @@ export default function Blog() {
 
   return (
     <div>
-      <PageHeader
-        title="Blog"
-        description="Thoughts on technology, business, and everything I learn along the way."
-      />
+      <PageHeader title={t('blog.title')} description={t('blog.description')} />
       <Container className="py-14">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setActive('All')}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                active === 'All'
+                  ? 'bg-violet-600 text-white'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              {t('blog.all')}
+            </button>
             {categories.map((category) => (
               <button
                 key={category}
@@ -54,7 +65,7 @@ export default function Blog() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search posts..."
+              placeholder={t('blog.searchPlaceholder')}
               className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm outline-none focus:border-violet-500 sm:w-64 dark:border-slate-700 dark:bg-slate-900"
             />
           </div>
@@ -67,9 +78,7 @@ export default function Blog() {
             ))}
           </div>
         ) : (
-          <p className="py-16 text-center text-slate-500 dark:text-slate-400">
-            No posts match your search.
-          </p>
+          <p className="py-16 text-center text-slate-500 dark:text-slate-400">{t('blog.noResults')}</p>
         )}
       </Container>
     </div>

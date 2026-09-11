@@ -1,20 +1,20 @@
 import { skillGroups } from '../data/skills.js'
+import { useLanguage } from '../context/LanguageContext.jsx'
 import Container from '../components/Container.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import SkillIcon from '../components/SkillIcon.jsx'
 
 export default function Skills() {
+  const { t } = useLanguage()
+
   return (
     <div>
-      <PageHeader
-        title="Skills & Tools"
-        description="Technologies and tools I use to build and solve problems."
-      />
+      <PageHeader title={t('skills.title')} description={t('skills.description')} />
       <Container className="space-y-10 py-14">
         {skillGroups.map((group) => (
-          <div key={group.title}>
+          <div key={group.titleKey}>
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-              {group.title}
+              {t(group.titleKey)}
             </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
               {group.skills.map((skill) => (

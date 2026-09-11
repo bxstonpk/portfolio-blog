@@ -1,16 +1,18 @@
 import { Mail } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { site } from '../data/site.js'
+import { useLanguage } from '../context/LanguageContext.jsx'
 import Container from './Container.jsx'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const { t } = useLanguage()
 
   return (
     <footer className="border-t border-slate-200 py-10 dark:border-slate-800">
       <Container className="flex flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-slate-500 dark:text-slate-400">
-          © {year} {site.name}. All rights reserved.
+          © {year} {site.name}. {t('footer.rights')}
         </p>
         <div className="flex items-center gap-3">
           <a
