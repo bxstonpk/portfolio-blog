@@ -48,7 +48,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center">
             <img
-              src="/images/profile.jpg"
+              src={`${import.meta.env.BASE_URL}images/profile.jpg`}
               alt={site.name}
               className="h-40 w-40 rounded-full object-cover shadow-lg ring-4 ring-white sm:h-56 sm:w-56 dark:ring-slate-800"
             />

@@ -16,7 +16,7 @@ export default function About() {
         <div className="grid gap-10 md:grid-cols-[280px_1fr]">
           <aside className="space-y-5">
             <img
-              src="/images/profile.jpg"
+              src={`${import.meta.env.BASE_URL}images/profile.jpg`}
               alt={site.name}
               className="h-40 w-40 rounded-2xl object-cover shadow-lg"
             />
