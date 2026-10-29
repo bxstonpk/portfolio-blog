@@ -53,6 +53,52 @@ What the results show:
 
 ![Peak RAM per job vs. dataset size](images/projects/vector-search-benchmark/peak-ram.webp)
 
+## Application: marketing analysis of reviews
+
+I reused the same vectors from the experiment (MiniLM, 384-d) for a demo that analyzes reviews from a marketing angle. It uses 100,000 reviews with the positive/negative labels that come with the dataset (50% positive) and answers three questions.
+
+### Choosing the index from the experiment
+
+The demo runs about 1,010 queries in total. The program reads this machine's measured build times and latencies and computes `T(Q)` for each index: IVF-Flat ≈ 5.4 s, Flat ≈ 12.5 s, HNSW ≈ 49.3 s. So it picks IVF-Flat (`nprobe=48`, the setting that passed recall ≥ 0.95). The research results drive the choice rather than intuition.
+
+### 1. What segments are there, and which is least satisfied?
+
+- Reviews are split into 10 segments with k-means on the vectors.
+- Each segment's keywords come from c-TF-IDF.
+- "Pain words" are words that stand out in a segment's negative reviews compared with its positive ones.
+
+The least satisfied segment is electronics (phone, battery, sound), with only 32% positive reviews; its pain words are support, software, and months. Next is general goods (quality, price, plastic) at 36% positive, with pain words broke, cheap, and return.
+
+![Market map: share of reviews on the x-axis, share of positive reviews on the y-axis; red segments are below 50% satisfaction](images/projects/vector-search-benchmark/market-segments.webp)
+
+### 2. Is each topic discussed positively or negatively?
+
+I wrote 10 topics a marketing team might care about as neutral English phrases, such as "shipping and delivery time". Each phrase is embedded, the 300 nearest reviews are retrieved, and the positive/negative share is counted.
+
+- Most negative: customer service/returns (17% positive), compared with the previous version (27%), battery (29%).
+- Most positive: easy to use (74%), bought as a gift (71%).
+
+![Positive/negative share per topic, from the 300 reviews nearest to each question](images/projects/vector-search-benchmark/market-aspects.webp)
+
+### 3. Monitoring new reviews as they arrive
+
+The demo simulates 1,000 new reviews arriving one at a time. For each one, it:
+
+1. finds the 10 nearest existing reviews and takes a similarity-weighted positive/negative vote;
+2. assigns it to the nearest segment;
+3. raises an alert if it's predicted negative.
+
+Predictions matched the true labels 77.3% of the time. Mean latency was 2.08 ms per query (p95 3.85 ms), and the whole demo, from building the index to the end, took about 38 seconds.
+
+![The terminal dashboard at the end of the demo: segments, topics customers mention, and negative-review alerts](images/projects/vector-search-benchmark/market-dashboard.webp)
+
+Caveats:
+
+- The 77% accuracy comes from a simple neighbor vote, not a purpose-trained classifier.
+- Topic search returns reviews that are *similar* to the question, which doesn't guarantee each one is actually about that topic (mean similarity about 0.36–0.54).
+- The k-means segments mostly follow product categories (books, music, movies), not customer groups as such.
+- It's a demo for a presentation, not something used on real business data.
+
 ## Limitations
 
 - It ran on a single machine; the planned cross-machine comparison hasn't been done.
