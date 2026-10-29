@@ -6,9 +6,12 @@ import {
   SiGo,
   SiGraphql,
   SiHtml5,
+  SiInfluxdb,
   SiJavascript,
+  SiMqtt,
   SiMysql,
   SiNodedotjs,
+  SiPostgresql,
   SiPython,
   SiReact,
   SiTailwindcss,
@@ -35,6 +38,9 @@ const ICONS = {
   docker: SiDocker,
   cicd: Workflow,
   mysql: SiMysql,
+  postgresql: SiPostgresql,
+  influxdb: SiInfluxdb,
+  mqtt: SiMqtt,
   figma: SiFigma,
 }
 
