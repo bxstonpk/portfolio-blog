@@ -5,15 +5,15 @@
 // its own page (see lib/projectDocs.js); otherwise the card uses `link`.
 export const projects = [
   {
-    slug: 'self-deployment-platform',
-    title: 'Self-Service Deployment Platform',
+    slug: 'app-development-platform',
+    title: 'AI-Assisted App Development Platform',
     description: {
-      en: 'An internal platform where employees deploy the apps they build with Claude Code themselves: an MCP server and skill for Claude, a Go API that builds, scans, and runs apps on Docker, signed production approvals, and an admin portal. Runs on one on-prem host.',
-      th: 'แพลตฟอร์มภายในให้พนักงาน deploy แอปที่สร้างด้วย Claude Code ได้เอง มี MCP server และ skill สำหรับ Claude, API ภาษา Go ที่ build สแกน และรันแอปบน Docker, การอนุมัติ production ด้วยลายเซ็นดิจิทัล และ Admin Portal รันบน server ในองค์กรเครื่องเดียว',
+      en: 'The company standard for building internal apps with Claude Code, end to end: register the app first, scaffold from company templates, develop on a dev copy with checks and tests run by the platform, then reach production only with a review document and a signed approval. Go API, Python MCP server, React portal.',
+      th: 'มาตรฐานการพัฒนาแอปภายในด้วย Claude Code ตั้งแต่ต้นน้ำ: ลงทะเบียนแอปก่อนเขียนโค้ด สร้างโครงจาก template ของบริษัท พัฒนาบนตัว dev โดยแพลตฟอร์มตรวจมาตรฐานและรันเทสต์ให้ แล้วขึ้น production ได้เมื่อมีเอกสารรีวิวและลายเซ็นอนุมัติ Backend เป็น Go, MCP server เป็น Python, Portal เป็น React',
     },
     period: { en: 'Aug – Oct 2026', th: 'ส.ค. – ต.ค. 2569' },
-    cover: 'images/projects/self-deployment-platform/dashboard.webp',
-    tags: ['Go', 'Python', 'React', 'TypeScript', 'Docker', 'PostgreSQL', 'MCP'],
+    cover: 'images/projects/app-development-platform/dashboard.webp',
+    tags: ['Go', 'Python', 'React', 'TypeScript', 'Docker', 'PostgreSQL', 'MCP', 'Claude Code'],
     categories: ['Web Application', 'DevOps'],
     link: '#',
   },
