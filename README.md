@@ -5,6 +5,7 @@ A personal portfolio and blog built with React, Vite, and Tailwind CSS. Blog pos
 ## Getting started
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
@@ -13,18 +14,18 @@ Then open the printed local URL in your browser.
 
 ## Customize your info
 
-Edit [src/data/site.js](src/data/site.js) (name, role, bio, contact links), [src/data/projects.js](src/data/projects.js), and [src/data/skills.js](src/data/skills.js).
+Edit [src/data/site.js](frontend/src/data/site.js) (name, role, bio, contact links), [src/data/projects.js](frontend/src/data/projects.js), and [src/data/skills.js](frontend/src/data/skills.js).
 
 ## Languages / i18n
 
-- UI text (nav, buttons, headings, etc.) lives in [src/i18n/translations.js](src/i18n/translations.js) as `{ en: {...}, th: {...} }`. Use `useLanguage().t('some.key')` in components.
+- UI text (nav, buttons, headings, etc.) lives in [src/i18n/translations.js](frontend/src/i18n/translations.js) as `{ en: {...}, th: {...} }`. Use `useLanguage().t('some.key')` in components.
 - Bilingual content fields in the data files (role, bio, project descriptions, etc.) are `{ en: '...', th: '...' }` objects, resolved with `pick(field, lang)` from `src/i18n/translations.js`. A plain string (not an `{en, th}` object) is shown as-is in both languages — useful for names, links, tech terms.
 - The switcher in the navbar sets the language and remembers it in `localStorage`. On first visit it guesses from the browser's language.
 
 ## Writing blog posts
 
-- Drafts go in `blogs/draft/*.md` — these are **not** shown on the site.
-- When a post is ready to publish, move it to `blogs/published/*.md`. Anything in that folder is picked up automatically.
+- Drafts go in `frontend/blogs/draft/*.md` — these are **not** shown on the site.
+- When a post is ready to publish, move it to `frontend/blogs/published/*.md`. Anything in that folder is picked up automatically.
 
 Each post needs frontmatter like this:
 
