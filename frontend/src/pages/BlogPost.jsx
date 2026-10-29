@@ -1,14 +1,12 @@
 import { useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
 import { ArrowLeft, Check, Link2 } from 'lucide-react'
 import { FaFacebook, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
 import { getPostBySlug } from '../lib/posts.js'
-import { extractHeadings } from '../lib/toc.js'
+import { extractHeadings, scrollToHeading } from '../lib/toc.js'
 import { useLanguage } from '../context/LanguageContext.jsx'
 import Container from '../components/Container.jsx'
+import Markdown from '../components/Markdown.jsx'
 
 function formatDate(date, lang) {
   if (!date) return ''
@@ -71,11 +69,7 @@ export default function BlogPost() {
         </div>
 
         <div className="grid gap-10 lg:grid-cols-[1fr_220px]">
-          <article className="prose prose-slate max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-violet-600 dark:prose-a:text-violet-400">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
-              {post.content}
-            </ReactMarkdown>
-          </article>
+          <Markdown>{post.content}</Markdown>
 
           <aside className="order-first space-y-8 lg:order-last">
             {headings.length > 0 && (
@@ -88,6 +82,7 @@ export default function BlogPost() {
                     <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : ''}>
                       <a
                         href={`#${heading.id}`}
+                        onClick={(event) => scrollToHeading(event, heading.id)}
                         className="text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
                       >
                         {heading.text}

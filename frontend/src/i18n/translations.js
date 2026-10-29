@@ -31,6 +31,13 @@ export const translations = {
       all: 'All',
       viewProject: 'View Project',
     },
+    projectDetail: {
+      back: 'Back to Projects',
+      toc: 'On this page',
+      stack: 'Tech stack',
+      period: 'Period',
+      otherLanguage: 'This write-up isn’t available in English yet — showing the Thai version.',
+    },
     blog: {
       title: 'Blog',
       description: 'Thoughts on technology, business, and everything I learn along the way.',
@@ -109,6 +116,13 @@ export const translations = {
       description: 'ผลงานบางส่วนที่ผมเคยทำ',
       all: 'ทั้งหมด',
       viewProject: 'ดูผลงาน',
+    },
+    projectDetail: {
+      back: 'กลับไปที่ผลงาน',
+      toc: 'ในหน้านี้',
+      stack: 'เทคโนโลยีที่ใช้',
+      period: 'ช่วงเวลา',
+      otherLanguage: 'บทความนี้ยังไม่มีฉบับภาษาไทย — กำลังแสดงฉบับภาษาอังกฤษ',
     },
     blog: {
       title: 'บล็อก',

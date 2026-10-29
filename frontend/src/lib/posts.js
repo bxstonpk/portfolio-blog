@@ -34,7 +34,7 @@ function excerptFrom(content, length = 160) {
   return text.length > length ? `${text.slice(0, length).trim()}…` : text
 }
 
-function readingTime(content) {
+export function readingTime(content) {
   const totalChars = content.replace(/\s+/g, '').length
   const thaiChars = (content.match(THAI_CHAR_RE) || []).length
   if (totalChars > 0 && thaiChars / totalChars > 0.3) {
@@ -47,13 +47,18 @@ function readingTime(content) {
 }
 
 // slug -> { en: { data, content } | undefined, th: { ... } | undefined }
-const postsBySlug = {}
-for (const [path, raw] of Object.entries(files)) {
-  const { slug, lang } = splitFilename(path)
-  const parsed = parseFrontmatter(raw)
-  postsBySlug[slug] ??= {}
-  postsBySlug[slug][lang] = parsed
+// Shared with lib/projectDocs.js, which uses the same `name.md` / `name.th.md` convention.
+export function groupBySlug(globbedFiles) {
+  const bySlug = {}
+  for (const [path, raw] of Object.entries(globbedFiles)) {
+    const { slug, lang } = splitFilename(path)
+    bySlug[slug] ??= {}
+    bySlug[slug][lang] = parseFrontmatter(raw)
+  }
+  return bySlug
 }
+
+const postsBySlug = groupBySlug(files)
 
 function buildPost(slug, variants, lang) {
   const resolvedLang = variants[lang] ? lang : variants.en ? 'en' : 'th'

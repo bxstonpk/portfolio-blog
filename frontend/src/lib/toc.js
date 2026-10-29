@@ -17,3 +17,10 @@ export function extractHeadings(content) {
 
   return headings
 }
+
+// The site uses HashRouter, so a plain `#heading-id` link would be read as a
+// route change. Scroll to the heading instead.
+export function scrollToHeading(event, id) {
+  event.preventDefault()
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
