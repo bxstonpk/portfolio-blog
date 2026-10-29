@@ -5,6 +5,19 @@
 // its own page (see lib/projectDocs.js); otherwise the card uses `link`.
 export const projects = [
   {
+    slug: 'self-deployment-platform',
+    title: 'Self-Service Deployment Platform',
+    description: {
+      en: 'An internal platform where employees deploy the apps they build with Claude Code themselves: an MCP server and skill for Claude, a Go API that builds, scans, and runs apps on Docker, signed production approvals, and an admin portal. Runs on one on-prem host.',
+      th: 'แพลตฟอร์มภายในให้พนักงาน deploy แอปที่สร้างด้วย Claude Code ได้เอง มี MCP server และ skill สำหรับ Claude, API ภาษา Go ที่ build สแกน และรันแอปบน Docker, การอนุมัติ production ด้วยลายเซ็นดิจิทัล และ Admin Portal รันบน server ในองค์กรเครื่องเดียว',
+    },
+    period: { en: 'Aug – Oct 2026', th: 'ส.ค. – ต.ค. 2569' },
+    cover: 'images/projects/self-deployment-platform/dashboard.webp',
+    tags: ['Go', 'Python', 'React', 'TypeScript', 'Docker', 'PostgreSQL', 'MCP'],
+    categories: ['Web Application', 'DevOps'],
+    link: '#',
+  },
+  {
     slug: 'tank-monitoring-iot',
     title: 'Tank Monitoring IoT Platform',
     description: {
@@ -36,6 +49,7 @@ const CATEGORY_LABELS = {
   'Web Application': { en: 'Web Application', th: 'เว็บแอปพลิเคชัน' },
   Data: { en: 'Data', th: 'ข้อมูล' },
   IoT: { en: 'IoT', th: 'IoT' },
+  DevOps: { en: 'DevOps', th: 'DevOps' },
 }
 
 export function getProjectCategories() {
