@@ -1,6 +1,6 @@
 ## The question
 
-Approximate nearest-neighbor (ANN) indexes like IVF-Flat and HNSW answer queries far faster than exact brute-force search (Flat), but they cost time to build first. This course research project asks: **how many queries does it take before ANN beats Flat**, once index build time is counted? And how does that number change with dataset size and embedding dimension?
+Approximate nearest-neighbor (ANN) indexes like IVF-Flat and HNSW answer queries far faster than exact brute-force search (Flat), but they cost time to build first. This independent research project asks: **how many queries does it take before ANN beats Flat**, once index build time is counted? And how does that number change with dataset size and embedding dimension?
 
 ## Scope
 
@@ -97,7 +97,7 @@ Caveats:
 - The 77% accuracy comes from a simple neighbor vote, not a purpose-trained classifier.
 - Topic search returns reviews that are *similar* to the question, which doesn't guarantee each one is actually about that topic (mean similarity about 0.36–0.54).
 - The k-means segments mostly follow product categories (books, music, movies), not customer groups as such.
-- It's a demo for a presentation, not something used on real business data.
+- It's a demo, not something used on real business data.
 
 ## Limitations
 
